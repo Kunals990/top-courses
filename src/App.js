@@ -7,6 +7,7 @@ import Navbar from './components/NavBar.js';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Spinner from './components/Spinner.js';
 
 
 function App() {
@@ -43,11 +44,7 @@ function App() {
     <div className="App bg-[#4a4e69] min-h-screen">
       <Navbar/>
       <Filter courseName={filterData} element={element} setElement={setElement}></Filter>
-      {loading ? (
-        <div className="flex justify-center items-center h-full">
-          <div className="loader text-white">loading</div> {/* Add your loading animation here */}
-        </div>
-      ) : (
+      {loading ? (<Spinner></Spinner>) : (
         <AllCards className="flex" courses={courses} liked={liked} likeRemoved={likeRemoved} element={element} />
       )}
       <ToastContainer closeOnClick={true} />
